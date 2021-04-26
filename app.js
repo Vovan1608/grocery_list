@@ -14,4 +14,19 @@ let editElement;
 let editFlag = false;
 let editID = "";
 
+// functions
+const addItem = e => {
+	e.preventDefault();
+	const value = grocery.value;
+	const id = new Date().getTime().toString();
+	if (value && !editFlag) {
+
+	} else if (value && editFlag) {
+
+	} else {
+		alert.textContent = "empty value";
+		alert.classList.add("alert-danger");
+	}
+}
 // addEventListener
+form.addEventListener("submit", addItem);
