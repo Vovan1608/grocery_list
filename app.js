@@ -24,9 +24,19 @@ const addItem = e => {
 	} else if (value && editFlag) {
 
 	} else {
-		alert.textContent = "empty value";
-		alert.classList.add("alert-danger");
+		displayAlert("please, enter value", "danger")
 	}
+}
+
+const displayAlert = (text, action) => {
+	alert.textContent = text;
+	alert.classList.add(`alert-${action}`);
+
+	// remove alert
+	setTimeout(() => {
+		alert.textContent = "";
+		alert.classList.remove(`alert-${action}`);
+	}, 1000);
 }
 // addEventListener
 form.addEventListener("submit", addItem);
