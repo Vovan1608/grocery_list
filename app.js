@@ -9,3 +9,9 @@ const clearBtn = document.querySelector(".clear-btn");
 const container = document.querySelector(".grocery-container");
 const list = document.querySelector(".grocery-list");
 
+// edit option
+let editElement;
+let editFlag = false;
+let editID = "";
+
+// addEventListener
