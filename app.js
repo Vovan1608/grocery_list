@@ -51,7 +51,10 @@ const addItem = e => {
 		addToLocalStorage(id, value);
 		setBackToDefault();
 	} else if (value && editFlag) {
-
+		editElement.innerHTML = value;
+		displayAlert("value edit", "success");
+		// editLocalStorage(editID, value);
+		setBackToDefault();
 	} else {
 		displayAlert("please, enter value", "danger")
 	}
@@ -68,10 +71,23 @@ const displayAlert = (text, action) => {
 	}, 1000);
 }
 
-const addToLocalStorage = (id, value) => {}
+const addToLocalStorage = (id, value) => {
+	const grocery = {id, value};
+	let items = getLocalStorage();
+	items.push(grocery);
+	localStorage.setItem("list", JSON.stringify(items));
+}
 
 const removeFromLocalStorage = id => {}
 
+const editLocalStorage = (id, value) => {
+
+}
+
+const getLocalStorage = () => {
+	return localStorage.getItem("list") ?
+	JSON.parse(localStorage.getItem("list")) : [];
+}
 // set back to empty string
 const setBackToDefault = () => {
 	grocery.value = "";
@@ -115,6 +131,7 @@ const editItem = e => {
 	editID = element.dataset.id;
 	submitBtn.textContent = "edit";
 }
+
 // addEventListener
 form.addEventListener("submit", addItem);
 clearBtn.addEventListener("click", clearItems);
